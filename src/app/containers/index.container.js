@@ -6,7 +6,9 @@ template.innerHTML = `
   }
 </style>
 <div>Index Works!</div>
-<a href="/#/daily-log">Daily Log</a>
+<ul>
+  <li><a href="#/daily-log">Daily Log</a></li>
+</ul>
 `
 
 export class Index extends HTMLElement {
