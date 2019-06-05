@@ -56,9 +56,9 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new WebpackPwaManifest({
-      name: 'Audio App',
-      short_name: 'AudioApp',
-      description: 'A Simple Audio App',
+      name: 'Bullet Journal App',
+      short_name: 'BulletJournalApp',
+      description: 'A Simple Bullet Journal App',
       background_color: '#ffffff',
       theme_color: '#ffffff',
       icons: [
