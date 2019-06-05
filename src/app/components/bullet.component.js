@@ -1,9 +1,27 @@
+const BULLET = {
+  TASK: '●',
+  DONE: 'x',
+  MIGRATED: '>',
+  SCHEDULED: '<',
+  IRRELEVANT: '',
+  NOTE: '―',
+  EVENT: '○',
+};
+
 const CLASS = {
   BULLET: 'bullet',
-}
+  LABEL: 'label',
+  ITEM: 'item',
+  SIGNIFIER: 'signifier',
+};
 
 const KEYCODE = {
   ENTER: 13,
+};
+
+const SIGNIFIER = {
+  PRIORITY: '*',
+  INSPIRATION: '!',
 };
 
 const template = document.createElement('template');
@@ -13,30 +31,33 @@ template.innerHTML = `
     display: block;
   }
 
-  :host([type="task"]) .bullet:before {
-    content: "●";
+  :host([type="irrelevant"]) .${CLASS.ITEM} {
+    text-decoration: line-through;
   }
 
-  :host([type="note"]) .bullet:before {
-    content: "-";
-  }
-
-  :host([type="event"]) .bullet:before {
-    content: "○";
-  }
-
-  .bullet {
+  .${CLASS.ITEM} {
     list-style: none;
   }
 
-  .bullet:before {
+  .${CLASS.SIGNIFIER} {
+    display: inline-block;
+    width: .5rem;
+    margin-left: -1rem;
+    text-align: center;
+  }
+
+  .${CLASS.BULLET} {
     display: inline-block;
     width: 1rem;
     margin-right: .5rem;
     text-align: center;
   }
 </style>
-<li class="${CLASS.BULLET}"></li>
+<li class="${CLASS.ITEM}">
+  <span class="${CLASS.SIGNIFIER}"></span>
+  <span class="${CLASS.BULLET}"></span>
+  <span class="${CLASS.LABEL}"></span>
+</li>
 `
 
 export class Bullet extends HTMLElement {
@@ -47,14 +68,16 @@ export class Bullet extends HTMLElement {
   }
 
   connectedCallback() {
-    this._setLabel();
+    this._setBullet(this.getAttribute('type'), this.getAttribute('status'));
+    this._setLabel(this.getAttribute('label'));
+    this._setSignifier(this.getAttribute('signifier'));
     this._setEvents();
   }
 
   disconnectedCallback() {
-    this.shadowRoot.querySelector(`.${CLASS.BULLET}`)
+    this.shadowRoot.querySelector(`.${CLASS.LABEL}`)
       .removeEventListener('click', this._onBulletClick);
-    this.shadowRoot.querySelector(`.${CLASS.BULLET}`)
+    this.shadowRoot.querySelector(`.${CLASS.LABEL}`)
       .removeEventListener('keydown', this._onBulletKeydown);
   }
 
@@ -70,14 +93,30 @@ export class Bullet extends HTMLElement {
   }
 
   _setEvents() {
-    this.shadowRoot.querySelector(`.${CLASS.BULLET}`)
+    this.shadowRoot.querySelector(`.${CLASS.LABEL}`)
       .addEventListener('click', this._onBulletClick);
-    this.shadowRoot.querySelector(`.${CLASS.BULLET}`)
+    this.shadowRoot.querySelector(`.${CLASS.LABEL}`)
       .addEventListener('keydown', this._onBulletKeydown);
   }
 
-  _setLabel() {
-    const bullet = this.shadowRoot.querySelector(`.${CLASS.BULLET}`);
-    bullet.innerHTML = this.getAttribute('label');
+  _setBullet(type, status) {
+    if (type) {
+      const bulletEl = this.shadowRoot.querySelector(`.${CLASS.BULLET}`);
+      bulletEl.innerHTML = status ? BULLET[status.toUpperCase()] : BULLET[type.toUpperCase()];
+    }
+  }
+
+  _setLabel(label) {
+    if (label) {
+      const labelEl = this.shadowRoot.querySelector(`.${CLASS.LABEL}`);
+      labelEl.innerHTML = label;
+    }
+  }
+
+  _setSignifier(signifier) {
+    if (signifier) {
+      const signifierEl = this.shadowRoot.querySelector(`.${CLASS.SIGNIFIER}`);
+      signifierEl.innerHTML = SIGNIFIER[signifier.toUpperCase()];
+    }
   }
 }
