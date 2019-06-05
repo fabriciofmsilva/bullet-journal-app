@@ -58,7 +58,7 @@ template.innerHTML = `
 </li>
 `
 
-export class Bullet extends HTMLElement {
+export class BulletComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

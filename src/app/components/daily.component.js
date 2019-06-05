@@ -18,7 +18,7 @@ template.innerHTML = `
 </section>
 `
 
-export class DailyLog extends HTMLElement {
+export class DailyComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
