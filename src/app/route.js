@@ -18,8 +18,7 @@ const parseRequestURL = () => {
   return request;
 }
 
-// The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
-const router = async () => {
+const router = () => {
   const content = null || document.getElementById('router-outlet');
 
   let request = parseRequestURL();
