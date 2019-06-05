@@ -1,3 +1,5 @@
+import { KEYCODE } from '../constants';
+
 const BULLET = {
   TASK: '●',
   DONE: 'x',
@@ -15,10 +17,6 @@ const CLASS = {
   SIGNIFIER: 'signifier',
 };
 
-const KEYCODE = {
-  ENTER: 13,
-};
-
 const SIGNIFIER = {
   PRIORITY: '*',
   INSPIRATION: '!',
@@ -31,7 +29,7 @@ template.innerHTML = `
     display: block;
   }
 
-  :host([type="irrelevant"]) .${CLASS.ITEM} {
+  :host([status="irrelevant"]) .${CLASS.ITEM} {
     text-decoration: line-through;
   }
 

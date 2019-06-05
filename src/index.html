@@ -5,26 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bullet Journal</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-  <app-bullets>
-    <app-bullet label="I'm a task!" type="task"></app-bullet>
-    <app-bullet label="I'm a done task!" type="done"></app-bullet>
-    <app-bullet label="I'm a migrated task!" type="task" status="migrated"></app-bullet>
-    <app-bullet label="I'm a scheduled task!" type="task" status="scheduled"></app-bullet>
-    <app-bullet label="I'm a irrelevant task!" type="task" status="irrelevant"></app-bullet>
-    <app-bullet label="I'm a note!" type="note"></app-bullet>
-    <app-bullet label="I'm a priority note!" type="note" signifier="priority"></app-bullet>
-    <app-bullet label="I'm an inspiration note!" type="note" signifier="inspiration"></app-bullet>
-    <app-bullet label="I'm a event!" type="event"></app-bullet>
+  <app-daily-log date="2019-06-05">
     <app-bullets>
       <app-bullet label="I'm a task!" type="task"></app-bullet>
-      <app-bullet label="I'm a priority task!" type="task" signifier="priority"></app-bullet>
+      <app-bullet label="I'm a done task!" type="done"></app-bullet>
+      <app-bullet label="I'm a migrated task!" type="task" status="migrated"></app-bullet>
+      <app-bullet label="I'm a scheduled task!" type="task" status="scheduled"></app-bullet>
+      <app-bullet label="I'm a irrelevant task!" type="task" status="irrelevant"></app-bullet>
+      <app-bullet label="I'm a note!" type="note"></app-bullet>
+      <app-bullet label="I'm a priority note!" type="note" signifier="priority"></app-bullet>
+      <app-bullet label="I'm an inspiration note!" type="note" signifier="inspiration"></app-bullet>
+      <app-bullet label="I'm a event!" type="event"></app-bullet>
       <app-bullets>
         <app-bullet label="I'm a task!" type="task"></app-bullet>
         <app-bullet label="I'm a priority task!" type="task" signifier="priority"></app-bullet>
+        <app-bullets>
+          <app-bullet label="I'm a task!" type="task"></app-bullet>
+          <app-bullet label="I'm a priority task!" type="task" signifier="priority"></app-bullet>
+        </app-bullets>
       </app-bullets>
     </app-bullets>
-  </app-bullets>
+  </app-daily-log>
 </body>
 </html>
