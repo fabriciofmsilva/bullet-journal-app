@@ -12,11 +12,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "icon_512x512.5ee80270347eb2c694399874384c524c.png"
   },
   {
-    "revision": "bda9e7a62a3ea2b27030a3fff08c5539",
+    "revision": "c4a25c5d7bc479a6781d16fb964fda19",
     "url": "index.html"
   },
   {
-    "url": "main.930f13759f5ff9b73ac9.js"
+    "url": "main.eb51de1d751a1206e4f8.js"
   },
   {
     "url": "manifest.0ee740cba2e38a7afb24df7c57a35367.json"
